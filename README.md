@@ -14,7 +14,6 @@ nvim "+Lazy sync" +qa
 
 ### fonts
 #### wsl
-
 Get font:
 1) https://www.nerdfonts.com/font-downloads 2) JetbrainsMono Nerd Font
 
@@ -25,6 +24,13 @@ Select font
 The font on /fonts should be installed on terminal config via Windows
 1) open terminal 2) down arrow 3) settings 4) wsl distro 5) appearance
 6) Font face select it
+
+### dependencias
+- fdfind
+- ripgrep
+```bash
+sudo apt install fdfind ripgrep
+```
 
 A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
 Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
