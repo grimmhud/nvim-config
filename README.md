@@ -4,6 +4,11 @@
 
 ```bash
 #!/bin/bash
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs
+
+RUN npm install -g pyright typescript typescript-language-server
+
 apt-get update && apt-get install -y \
     fd-find \
     ripgrep \
