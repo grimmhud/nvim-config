@@ -4,12 +4,27 @@
 
 ```bash
 #!/bin/bash
-echo "Instalando dependências..."
-sudo apt install git curl ripgrep fd unzip -y
-echo "Clonando LazyVim config..."
-git clone https://github.com/seu-usuario/seu-repo-nvim ~/.config/nvim
-echo "Abrindo Neovim para instalar os plugins..."
-nvim "+Lazy sync" +qa
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs
+
+RUN npm install -g pyright typescript typescript-language-server
+
+apt-get update && apt-get install -y \
+    fd-find \
+    ripgrep \
+    git \
+    curl \
+    unzip \
+    && apt-get clean
+
+curl -LO https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-x86_64.tar.gz && \
+    tar -xzf nvim-linux-x86_64.tar.gz && \
+    mv nvim-linux-x86_64 /opt/nvim && \
+    ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim && \
+    rm nvim-linux-x86_64.tar.gz
+
+git clone https://github.com/grimmhud/nvim-config ~/.config/nvim
+nvim
 ```
 
 ### fonts
@@ -24,13 +39,3 @@ Select font
 The font on /fonts should be installed on terminal config via Windows
 1) open terminal 2) down arrow 3) settings 4) wsl distro 5) appearance
 6) Font face select it
-
-### dependencias
-- fdfind
-- ripgrep
-```bash
-sudo apt install fdfind ripgrep
-```
-
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
